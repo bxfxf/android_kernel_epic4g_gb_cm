@@ -43,8 +43,6 @@ loglevel 3
 # Backwards Compat - XXX: Going away in G*
     symlink /mnt/sdcard /sdcard
 
-# Include extra init file
-    import /system/etc/init.local.rc
 
     mkdir /system
     mkdir /data 0771 system system
@@ -563,6 +561,13 @@ on boot
     chown system system /dev/ttyGS0
     chown system system /dev/dun
 # +++++++++++++++++++++++++++++++++++++++++++      
+
+
+# Include extra init file
+import /system/etc/init.local.rc
+
+# Run sysinit
+exec /system/bin/sysinit
 
     class_start default
 
